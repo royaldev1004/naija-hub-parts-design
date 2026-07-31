@@ -33,7 +33,16 @@ export default function WebHomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="border-b border-border bg-warm">
+      <section className="relative isolate overflow-hidden border-b border-border bg-warm">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/images/hero-auto-parts.png)' }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-warm via-warm/95 to-warm/60"
+        />
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-orange/10 px-3 py-1 text-xs font-semibold text-orange">
