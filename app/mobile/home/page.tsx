@@ -39,7 +39,7 @@ export default function HomeScreen() {
         <div>
           <DragScrollRow className="-mr-4 pr-4">
             {products.slice(0, 4).map((p) => (
-              <div key={p.id} className="w-[82%] shrink-0 snap-start">
+              <div key={p.id} className="w-full shrink-0 snap-start">
                 <ProductCard product={p} href={`/mobile/product/${p.id}`} layout="overlay" />
               </div>
             ))}
