@@ -45,7 +45,7 @@ export function BottomNav() {
   }, [])
 
   return (
-    <nav className="border-t border-border bg-card">
+    <nav className="relative z-20 border-t border-border bg-card">
       <div className="flex items-stretch justify-around px-2 pb-5 pt-2">
         {navItems.map((item) => {
           // Guests must sign in (phone + OTP) before reaching dealer-only tabs.
