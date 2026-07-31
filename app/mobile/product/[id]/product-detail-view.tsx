@@ -3,9 +3,9 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft, Share2, Bookmark, MapPin, Info, ChevronRight } from 'lucide-react'
+import { Share2, Bookmark, MapPin, Info, ChevronRight } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { BackButton } from '@/components/mobile/back-button'
 import { VerifiedBadge, ConditionBadge } from '@/components/brand/badges'
 import { WhatsAppButton, CallButton } from '@/components/brand/contact-buttons'
 import { StoreInitials } from '@/components/brand/store-card'
@@ -13,7 +13,6 @@ import { formatNaira, type Product } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
 export function ProductDetailView({ product }: { product: Product }) {
-  const router = useRouter()
   const [img, setImg] = useState(0)
   const [saved, setSaved] = useState(false)
 
@@ -31,13 +30,7 @@ export function ProductDetailView({ product }: { product: Product }) {
             />
           </div>
           <div className="absolute left-0 right-0 top-2 flex items-center justify-between px-4">
-            <button
-              onClick={() => router.back()}
-              aria-label="Back"
-              className="inline-flex size-9 items-center justify-center rounded-full bg-card/90 text-foreground backdrop-blur"
-            >
-              <ArrowLeft className="size-5" />
-            </button>
+            <BackButton fallback="/mobile/home" className="bg-card/90 backdrop-blur hover:bg-card" />
             <div className="flex gap-2">
               <button
                 aria-label="Share listing"

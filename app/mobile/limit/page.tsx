@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft, Check, Crown, Store, TrendingUp, Headphones } from 'lucide-react'
+import { Check, Crown, Store, TrendingUp, Headphones } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { BackButton } from '@/components/mobile/back-button'
 import { NAIRA } from '@/lib/data'
 
 const plans = [
@@ -36,17 +36,10 @@ const perks = [
 ]
 
 export default function LimitScreen() {
-  const router = useRouter()
   return (
     <PhoneShell>
       <header className="sticky top-0 z-10 flex items-center gap-2 bg-card/95 px-4 py-2 backdrop-blur">
-        <button
-          onClick={() => router.back()}
-          aria-label="Back"
-          className="inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
-        >
-          <ArrowLeft className="size-5" />
-        </button>
+        <BackButton fallback="/mobile/listings" />
         <h1 className="font-heading text-lg font-bold text-foreground">Upgrade Your Store</h1>
       </header>
 

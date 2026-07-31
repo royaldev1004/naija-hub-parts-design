@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Upload, MapPin, Check } from 'lucide-react'
+import { Upload, MapPin, Check } from 'lucide-react'
 import { Logo } from '@/components/brand/logo'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { BackButton } from '@/components/mobile/back-button'
 import { setSignedIn } from '@/lib/prototype-auth'
 import { cn } from '@/lib/utils'
 
@@ -79,13 +80,10 @@ export default function RegisterScreen() {
       <div className="flex h-full flex-col">
         <header className="px-6 pb-2 pt-4">
           <div className="flex items-center justify-between">
-            <button
-              onClick={() => (step === 0 ? router.back() : setStep((s) => s - 1))}
-              aria-label="Back"
-              className="inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
-            >
-              <ArrowLeft className="size-5" />
-            </button>
+            <BackButton
+              fallback="/mobile/welcome"
+              onBack={step === 0 ? undefined : () => setStep((s) => s - 1)}
+            />
             <Logo variant="light" size={32} />
           </div>
           <h1 className="mt-4 font-heading text-xl font-bold text-foreground">Register Your Store</h1>
