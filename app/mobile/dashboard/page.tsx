@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {
   Bell,
+  User,
   PlusCircle,
   ListChecks,
   Store,
@@ -11,6 +12,7 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { Logo } from '@/components/brand/logo'
 import { VerifiedBadge } from '@/components/brand/badges'
 import { ProductCard } from '@/components/brand/product-card'
 import { productsByStore } from '@/lib/data'
@@ -33,20 +35,40 @@ export default function DashboardScreen() {
   const recent = productsByStore('ladipo-auto-spares')
   return (
     <PhoneShell nav>
-      <header className="bg-dark px-4 pb-5 pt-2 text-white">
+      {/* Individual navbar — separate from the hero */}
+      <nav className="sticky top-0 z-10 flex items-center justify-between bg-card/95 px-4 py-3 backdrop-blur">
+        <Link href="/mobile/home" aria-label="Naija Hub Parts home">
+          <Logo variant="light" size={34} />
+        </Link>
+        <div className="flex items-center gap-1">
+          <Link
+            href="/mobile/notifications"
+            aria-label="Notifications"
+            className="relative inline-flex size-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-muted"
+          >
+            <Bell className="size-5" />
+            <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-orange" />
+          </Link>
+          <Link
+            href="/mobile/account"
+            aria-label="Your profile"
+            className="inline-flex size-9 items-center justify-center overflow-hidden rounded-full text-foreground transition-colors hover:bg-muted"
+          >
+            <User className="size-5" />
+          </Link>
+        </div>
+      </nav>
+
+      <header className="bg-card px-4 pb-5 pt-3">
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-sm text-white/60">Good morning,</p>
-            <h1 className="font-heading text-xl font-bold">Tinuoye</h1>
+            <p className="text-sm text-muted-foreground">Good morning,</p>
+            <h1 className="font-heading text-xl font-bold text-foreground">Tinuoye</h1>
             <div className="mt-1.5 flex items-center gap-1.5">
-              <span className="text-sm text-white/70">Ladipo Auto Spares</span>
-              <VerifiedBadge compact className="bg-success/20" />
+              <span className="text-sm text-muted-foreground">Ladipo Auto Spares</span>
+              <VerifiedBadge compact />
             </div>
           </div>
-          <button className="relative inline-flex size-9 items-center justify-center rounded-full bg-white/10">
-            <Bell className="size-5" />
-            <span className="absolute right-2 top-2 size-2 rounded-full bg-orange" />
-          </button>
         </div>
 
         {/* Subscription card */}

@@ -15,7 +15,7 @@ const sorts = ['Most Relevant', 'Newest', 'Price: Low to High', 'Price: High to 
 export default function SearchScreen() {
   const [query, setQuery] = useState('Toyota Corolla brake pad')
   const [active, setActive] = useState<string[]>(['Verified Sellers'])
-  const [view, setView] = useState<'grid' | 'list'>('grid')
+  const [view, setView] = useState<'grid' | 'list'>('list')
   const [sort, setSort] = useState(sorts[0])
   const [sortOpen, setSortOpen] = useState(false)
 
