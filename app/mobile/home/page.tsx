@@ -61,7 +61,7 @@ export default function HomeScreen() {
           <SectionHeader title="Featured Parts" href="/mobile/search" />
           <div className="-mx-4 mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {products.slice(0, 4).map((p) => (
-              <div key={p.id} className="w-44 shrink-0 snap-start">
+              <div key={p.id} className="w-[82%] shrink-0 snap-start">
                 <ProductCard product={p} href={`/mobile/product/${p.id}`} />
               </div>
             ))}
