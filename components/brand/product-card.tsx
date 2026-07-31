@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Bookmark, MapPin } from 'lucide-react'
+import { Bookmark, MapPin, BadgeCheck } from 'lucide-react'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { formatNaira, type Product } from '@/lib/data'
@@ -16,9 +16,64 @@ export function ProductCard({
 }: {
   product: Product
   href: string
-  layout?: 'grid' | 'list'
+  layout?: 'grid' | 'list' | 'featured'
 }) {
   const [saved, setSaved] = useState(false)
+
+  if (layout === 'featured') {
+    return (
+      <Link
+        href={href}
+        className="group relative block aspect-[3/4] overflow-hidden rounded-3xl bg-muted"
+      >
+        <Image
+          src={product.image || '/placeholder.svg'}
+          alt={product.name}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+
+        {/* Top row: condition + save */}
+        <div className="absolute inset-x-0 top-0 flex items-start justify-between p-3">
+          <ConditionBadge condition={product.condition} className="bg-card/85 backdrop-blur" />
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault()
+              setSaved((v) => !v)
+            }}
+            aria-label={saved ? 'Remove from saved' : 'Save product'}
+            className="inline-flex size-9 items-center justify-center rounded-full bg-card/85 text-foreground backdrop-blur transition-colors hover:bg-card"
+          >
+            <Bookmark className={cn('size-4', saved && 'fill-orange text-orange')} />
+          </button>
+        </div>
+
+        {/* Bottom info panel over a translucent gradient */}
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="bg-gradient-to-t from-soft-black via-soft-black/80 to-transparent px-4 pb-4 pt-14 text-white">
+            <h3 className="line-clamp-2 text-balance text-base font-semibold leading-snug">{product.name}</h3>
+            <p className="mt-1 font-heading text-xl font-bold text-orange">{formatNaira(product.price)}</p>
+            <div className="mt-1.5 flex items-center gap-1.5 text-xs text-white/80">
+              <span className="truncate">{product.storeName}</span>
+              {product.verified && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-1.5 py-0.5 text-[11px] font-semibold text-white">
+                  <BadgeCheck className="size-3" />
+                  Verified
+                </span>
+              )}
+            </div>
+            <div className="mt-1 flex items-center gap-1 text-xs text-white/70">
+              <MapPin className="size-3 shrink-0" />
+              <span className="truncate">
+                {product.location} · {product.postedLabel}
+              </span>
+            </div>
+          </div>
+        </div>
+      </Link>
+    )
+  }
 
   if (layout === 'list') {
     return (
