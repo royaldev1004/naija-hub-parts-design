@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Bell, User } from 'lucide-react'
 import { Logo } from '@/components/brand/logo'
 import { PhoneShell } from '@/components/mobile/phone-shell'
-import { DragScrollRow } from '@/components/mobile/drag-scroll-row'
+import { FeaturedCarousel } from '@/components/mobile/featured-carousel'
 import { ProductCard } from '@/components/brand/product-card'
 import { StoreCard } from '@/components/brand/store-card'
 import { CategoryCard, SectionHeader } from '@/components/brand/ui-bits'
@@ -35,15 +35,9 @@ export default function HomeScreen() {
       </header>
 
       <div className="space-y-6 px-4 pb-6 pt-4">
-        {/* Featured — horizontal scroll */}
+        {/* Featured — horizontal scroll with pagination */}
         <div>
-          <DragScrollRow className="-mr-4 pr-4">
-            {products.slice(0, 4).map((p) => (
-              <div key={p.id} className="w-full shrink-0 snap-start">
-                <ProductCard product={p} href={`/mobile/product/${p.id}`} layout="overlay" />
-              </div>
-            ))}
-          </DragScrollRow>
+          <FeaturedCarousel products={products.slice(0, 4)} />
         </div>
 
         {/* Categories */}
