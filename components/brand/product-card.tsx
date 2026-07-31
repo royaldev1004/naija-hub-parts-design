@@ -22,7 +22,7 @@ export function ProductCard({
 
   if (layout === 'overlay') {
     return (
-      <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted">
+      <div className="group relative aspect-[4/5] overflow-hidden bg-muted">
         <Link href={href} className="absolute inset-0">
           <Image
             src={product.image || '/placeholder.svg'}
