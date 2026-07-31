@@ -37,8 +37,7 @@ export default function HomeScreen() {
       <div className="space-y-6 px-4 pb-6 pt-4">
         {/* Featured — horizontal scroll */}
         <div>
-          <SectionHeader title="Featured Parts" href="/mobile/search" />
-          <DragScrollRow className="-mr-4 mt-3 pr-4">
+          <DragScrollRow className="-mr-4 pr-4">
             {products.slice(0, 4).map((p) => (
               <div key={p.id} className="w-[82%] shrink-0 snap-start">
                 <ProductCard product={p} href={`/mobile/product/${p.id}`} layout="overlay" />
