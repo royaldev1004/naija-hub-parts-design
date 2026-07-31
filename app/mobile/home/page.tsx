@@ -34,9 +34,9 @@ export default function HomeScreen() {
         </div>
       </header>
 
-      <div className="space-y-6 px-4 pb-6 pt-4">
+      <div className="space-y-6 px-4 pb-6">
         {/* Featured — horizontal scroll with pagination */}
-        <div>
+        <div className="-mx-4">
           <FeaturedCarousel products={products.slice(0, 4)} />
         </div>
 
