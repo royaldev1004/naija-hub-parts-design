@@ -12,6 +12,7 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { Logo } from '@/components/brand/logo'
 import { VerifiedBadge } from '@/components/brand/badges'
 import { ProductCard } from '@/components/brand/product-card'
 import { productsByStore } from '@/lib/data'
@@ -34,6 +35,30 @@ export default function DashboardScreen() {
   const recent = productsByStore('ladipo-auto-spares')
   return (
     <PhoneShell nav>
+      {/* Individual navbar — separate from the hero */}
+      <nav className="flex items-center justify-between border-b border-white/10 bg-dark px-4 py-3 text-white">
+        <Link href="/mobile/home" aria-label="Naija Hub Parts home">
+          <Logo variant="dark" size={34} withWordmark />
+        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/mobile/notifications"
+            aria-label="Notifications"
+            className="relative inline-flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+          >
+            <Bell className="size-5" />
+            <span className="absolute right-2 top-2 size-2 rounded-full bg-orange" />
+          </Link>
+          <Link
+            href="/mobile/account"
+            aria-label="Your profile"
+            className="inline-flex size-9 items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+          >
+            <User className="size-5" />
+          </Link>
+        </div>
+      </nav>
+
       <header className="bg-dark px-4 pb-5 pt-2 text-white">
         <div className="flex items-start justify-between">
           <div>
@@ -43,23 +68,6 @@ export default function DashboardScreen() {
               <span className="text-sm text-white/70">Ladipo Auto Spares</span>
               <VerifiedBadge compact className="bg-success/20" />
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Link
-              href="/mobile/notifications"
-              aria-label="Notifications"
-              className="relative inline-flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-            >
-              <Bell className="size-5" />
-              <span className="absolute right-2 top-2 size-2 rounded-full bg-orange" />
-            </Link>
-            <Link
-              href="/mobile/account"
-              aria-label="Your profile"
-              className="inline-flex size-9 items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-            >
-              <User className="size-5" />
-            </Link>
           </div>
         </div>
 
