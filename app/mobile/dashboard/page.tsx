@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {
   Bell,
+  User,
   PlusCircle,
   ListChecks,
   Store,
@@ -43,10 +44,23 @@ export default function DashboardScreen() {
               <VerifiedBadge compact className="bg-success/20" />
             </div>
           </div>
-          <button className="relative inline-flex size-9 items-center justify-center rounded-full bg-white/10">
-            <Bell className="size-5" />
-            <span className="absolute right-2 top-2 size-2 rounded-full bg-orange" />
-          </button>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/mobile/notifications"
+              aria-label="Notifications"
+              className="relative inline-flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            >
+              <Bell className="size-5" />
+              <span className="absolute right-2 top-2 size-2 rounded-full bg-orange" />
+            </Link>
+            <Link
+              href="/mobile/account"
+              aria-label="Your profile"
+              className="inline-flex size-9 items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            >
+              <User className="size-5" />
+            </Link>
+          </div>
         </div>
 
         {/* Subscription card */}

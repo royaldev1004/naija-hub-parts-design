@@ -16,9 +16,59 @@ export function ProductCard({
 }: {
   product: Product
   href: string
-  layout?: 'grid' | 'list'
+  layout?: 'grid' | 'list' | 'overlay'
 }) {
   const [saved, setSaved] = useState(false)
+
+  if (layout === 'overlay') {
+    return (
+      <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted">
+        <Link href={href} className="absolute inset-0">
+          <Image
+            src={product.image || '/placeholder.svg'}
+            alt={product.name}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          {/* Dark gradient scrim so overlaid text stays legible over the photo */}
+          <span className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+        </Link>
+
+        <span className="absolute left-3 top-3">
+          <ConditionBadge condition={product.condition} />
+        </span>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault()
+            setSaved((v) => !v)
+          }}
+          aria-label={saved ? 'Remove from saved' : 'Save product'}
+          className="absolute right-3 top-3 inline-flex size-8 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur transition-colors hover:bg-black/55"
+        >
+          <Bookmark className={cn('size-4', saved && 'fill-orange text-orange')} />
+        </button>
+
+        {/* Info overlaid on the lower, dimmed area of the image */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 p-3.5">
+          <Link href={href} className="pointer-events-auto line-clamp-2 text-sm font-semibold leading-snug text-white">
+            {product.name}
+          </Link>
+          <p className="mt-1 font-heading text-lg font-bold text-orange">{formatNaira(product.price)}</p>
+          <div className="mt-1 flex items-center gap-1.5 text-xs text-white/70">
+            <span className="truncate">{product.storeName}</span>
+            {product.verified && <VerifiedBadge compact />}
+          </div>
+          <div className="mt-1 flex items-center gap-1 text-xs text-white/60">
+            <MapPin className="size-3" />
+            <span className="truncate">
+              {product.location} · {product.postedLabel}
+            </span>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   if (layout === 'list') {
     return (

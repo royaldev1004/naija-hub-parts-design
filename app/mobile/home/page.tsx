@@ -1,12 +1,11 @@
 import Link from 'next/link'
-import { ChevronDown, MapPin, Bell, User } from 'lucide-react'
+import { Bell, User } from 'lucide-react'
 import { Logo } from '@/components/brand/logo'
 import { PhoneShell } from '@/components/mobile/phone-shell'
 import { DragScrollRow } from '@/components/mobile/drag-scroll-row'
 import { ProductCard } from '@/components/brand/product-card'
 import { StoreCard } from '@/components/brand/store-card'
 import { CategoryCard, SectionHeader } from '@/components/brand/ui-bits'
-import { SearchBar } from '@/components/brand/ui-bits'
 import { categories, products, stores } from '@/lib/data'
 
 export default function HomeScreen() {
@@ -33,22 +32,19 @@ export default function HomeScreen() {
             </Link>
           </div>
         </div>
-        <button className="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-foreground">
-          <MapPin className="size-4 text-orange" />
-          Lagos, Nigeria
-          <ChevronDown className="size-4 text-muted-foreground" />
-        </button>
       </header>
 
-      <div className="space-y-6 px-4 pb-6 pt-2">
-        {/* Hero */}
+      <div className="space-y-6 px-4 pb-6 pt-4">
+        {/* Featured — horizontal scroll */}
         <div>
-          <h1 className="text-balance font-heading text-3xl font-extrabold leading-[1.15] tracking-tight text-foreground">
-            Find the <span className="text-orange">right</span> automotive part
-          </h1>
-          <Link href="/mobile/search" className="mt-3 block">
-            <SearchBar />
-          </Link>
+          <SectionHeader title="Featured Parts" href="/mobile/search" />
+          <DragScrollRow className="-mr-4 mt-3 pr-4">
+            {products.slice(0, 4).map((p) => (
+              <div key={p.id} className="w-[82%] shrink-0 snap-start">
+                <ProductCard product={p} href={`/mobile/product/${p.id}`} layout="overlay" />
+              </div>
+            ))}
+          </DragScrollRow>
         </div>
 
         {/* Categories */}
@@ -59,18 +55,6 @@ export default function HomeScreen() {
               <CategoryCard key={c.id} label={c.label} icon={c.icon} href="/mobile/search" compact />
             ))}
           </div>
-        </div>
-
-        {/* Featured — horizontal scroll */}
-        <div>
-          <SectionHeader title="Featured Parts" href="/mobile/search" />
-          <DragScrollRow className="-mr-4 mt-3 pr-4">
-            {products.slice(0, 4).map((p) => (
-              <div key={p.id} className="w-[82%] shrink-0 snap-start">
-                <ProductCard product={p} href={`/mobile/product/${p.id}`} />
-              </div>
-            ))}
-          </DragScrollRow>
         </div>
 
         {/* Recently added */}
