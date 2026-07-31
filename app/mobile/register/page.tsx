@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { ArrowLeft, Upload, MapPin, Check } from 'lucide-react'
 import { Logo } from '@/components/brand/logo'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { setSignedIn } from '@/lib/prototype-auth'
 import { cn } from '@/lib/utils'
 
 const steps = ['Business', 'Contact', 'Location', 'Agreement']
@@ -66,7 +67,10 @@ export default function RegisterScreen() {
 
   const next = () => {
     if (step < steps.length - 1) setStep((s) => s + 1)
-    else router.push('/mobile/pending')
+    else {
+      setSignedIn(true)
+      router.push('/mobile/pending')
+    }
   }
   const canSubmit = step < 3 || (confirmPhysical && agreeTerms)
 

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ArrowLeft, Loader2, AlertCircle } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { setSignedIn } from '@/lib/prototype-auth'
 import { cn } from '@/lib/utils'
 
 export default function OtpScreen() {
@@ -31,7 +32,10 @@ export default function OtpScreen() {
       return
     }
     setState('loading')
-    setTimeout(() => router.push('/mobile/register'), 1100)
+    setTimeout(() => {
+      setSignedIn(true)
+      router.push('/mobile/dashboard')
+    }, 1100)
   }
 
   return (
