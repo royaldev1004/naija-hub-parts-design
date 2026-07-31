@@ -1,0 +1,91 @@
+import Link from 'next/link'
+import { ChevronDown, MapPin, Bell, User } from 'lucide-react'
+import { Logo } from '@/components/brand/logo'
+import { PhoneShell } from '@/components/mobile/phone-shell'
+import { ProductCard } from '@/components/brand/product-card'
+import { StoreCard } from '@/components/brand/store-card'
+import { CategoryCard, SectionHeader } from '@/components/brand/ui-bits'
+import { SearchBar } from '@/components/brand/ui-bits'
+import { categories, products, stores } from '@/lib/data'
+
+export default function HomeScreen() {
+  return (
+    <PhoneShell nav>
+      {/* Header */}
+      <header className="sticky top-0 z-10 bg-card/95 px-4 pb-3 pt-1 backdrop-blur">
+        <div className="flex items-center justify-between">
+          <Logo variant="light" size={34} />
+          <div className="flex items-center gap-1">
+            <button className="relative inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted">
+              <Bell className="size-5" />
+              <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-orange" />
+            </button>
+            <Link
+              href="/mobile/account"
+              className="inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
+            >
+              <User className="size-5" />
+            </Link>
+          </div>
+        </div>
+        <button className="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-foreground">
+          <MapPin className="size-4 text-orange" />
+          Lagos, Nigeria
+          <ChevronDown className="size-4 text-muted-foreground" />
+        </button>
+      </header>
+
+      <div className="space-y-6 px-4 pb-6 pt-2">
+        {/* Hero */}
+        <div>
+          <h1 className="text-balance font-heading text-2xl font-bold leading-tight text-foreground">
+            Find the right automotive part
+          </h1>
+          <Link href="/mobile/search" className="mt-3 block">
+            <SearchBar />
+          </Link>
+        </div>
+
+        {/* Categories */}
+        <div>
+          <SectionHeader title="Popular Categories" href="/mobile/search" actionLabel="View all" />
+          <div className="mt-3 grid grid-cols-3 gap-3">
+            {categories.map((c) => (
+              <CategoryCard key={c.id} label={c.label} icon={c.icon} href="/mobile/search" compact />
+            ))}
+          </div>
+        </div>
+
+        {/* Featured */}
+        <div>
+          <SectionHeader title="Featured Parts" href="/mobile/search" />
+          <div className="mt-3 grid grid-cols-2 gap-3">
+            {products.slice(0, 4).map((p) => (
+              <ProductCard key={p.id} product={p} href={`/mobile/product/${p.id}`} />
+            ))}
+          </div>
+        </div>
+
+        {/* Recently added */}
+        <div>
+          <SectionHeader title="Recently Added" href="/mobile/search" />
+          <div className="mt-3 space-y-3">
+            {products.slice(4, 6).map((p) => (
+              <ProductCard key={p.id} product={p} href={`/mobile/product/${p.id}`} layout="list" />
+            ))}
+          </div>
+        </div>
+
+        {/* Verified stores */}
+        <div>
+          <SectionHeader title="Verified Stores Near You" href="/mobile/search" />
+          <div className="mt-3 space-y-3">
+            {stores.slice(0, 3).map((s) => (
+              <StoreCard key={s.slug} store={s} href={`/mobile/store/${s.slug}`} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </PhoneShell>
+  )
+}
