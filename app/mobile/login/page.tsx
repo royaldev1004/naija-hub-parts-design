@@ -2,22 +2,17 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Phone } from 'lucide-react'
+import { Phone } from 'lucide-react'
 import { Logo } from '@/components/brand/logo'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { BackButton } from '@/components/mobile/back-button'
 
 export default function DealerLoginScreen() {
   const router = useRouter()
   return (
     <PhoneShell>
       <div className="flex h-full flex-col px-6 pb-8 pt-4">
-        <button
-          onClick={() => router.back()}
-          aria-label="Back"
-          className="inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
-        >
-          <ArrowLeft className="size-5" />
-        </button>
+        <BackButton fallback="/mobile/welcome" />
 
         <div className="mt-6">
           <Logo variant="light" size={44} />

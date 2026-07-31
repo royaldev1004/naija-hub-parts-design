@@ -4,8 +4,9 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, MoreVertical, Eye, PlusCircle } from 'lucide-react'
+import { MoreVertical, Eye, PlusCircle } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { BackButton } from '@/components/mobile/back-button'
 import { StatusBadge } from '@/components/brand/badges'
 import { EmptyState } from '@/components/brand/ui-bits'
 import { products, formatNaira } from '@/lib/data'
@@ -52,13 +53,7 @@ export default function ListingsScreen() {
     <PhoneShell nav>
       <header className="sticky top-0 z-10 bg-card/95 px-4 pb-2 pt-2 backdrop-blur">
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => router.back()}
-            aria-label="Back"
-            className="inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
-          >
-            <ArrowLeft className="size-5" />
-          </button>
+          <BackButton fallback="/mobile/dashboard" />
           <h1 className="font-heading text-lg font-bold text-foreground">My Listings</h1>
         </div>
         <div className="mt-2 flex items-center justify-between rounded-xl bg-orange/10 px-3.5 py-2 text-xs font-semibold text-orange">

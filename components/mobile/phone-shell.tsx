@@ -2,15 +2,17 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { Home, Search, PlusCircle, Store, User, Signal, Wifi, BatteryFull } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { isSignedIn } from '@/lib/prototype-auth'
 
 const navItems = [
-  { href: '/mobile/home', label: 'Home', icon: Home },
-  { href: '/mobile/search', label: 'Search', icon: Search },
-  { href: '/mobile/add-listing', label: 'Add Listing', icon: PlusCircle },
-  { href: '/mobile/dashboard', label: 'My Store', icon: Store },
-  { href: '/mobile/account', label: 'Account', icon: User },
+  { href: '/mobile/home', label: 'Home', icon: Home, dealer: false },
+  { href: '/mobile/search', label: 'Search', icon: Search, dealer: false },
+  { href: '/mobile/add-listing', label: 'Add Listing', icon: PlusCircle, dealer: true },
+  { href: '/mobile/dashboard', label: 'My Store', icon: Store, dealer: true },
+  { href: '/mobile/account', label: 'Account', icon: User, dealer: false },
 ]
 
 export function StatusBar({ dark = false }: { dark?: boolean }) {
@@ -33,16 +35,27 @@ export function StatusBar({ dark = false }: { dark?: boolean }) {
 
 export function BottomNav() {
   const pathname = usePathname()
+  const [signedIn, setSignedInState] = useState(false)
+
+  useEffect(() => {
+    const sync = () => setSignedInState(isSignedIn())
+    sync()
+    window.addEventListener('nhp-auth-change', sync)
+    return () => window.removeEventListener('nhp-auth-change', sync)
+  }, [])
+
   return (
     <nav className="border-t border-border bg-card">
       <div className="flex items-stretch justify-around px-2 pb-5 pt-2">
         {navItems.map((item) => {
+          // Guests must sign in (phone + OTP) before reaching dealer-only tabs.
+          const href = item.dealer && !signedIn ? '/mobile/login' : item.href
           const active = pathname === item.href || (item.href === '/mobile/dashboard' && pathname.startsWith('/mobile/dashboard'))
           const Icon = item.icon
           return (
             <Link
               key={item.href}
-              href={item.href}
+              href={href}
               className={cn(
                 'flex flex-1 flex-col items-center gap-1 rounded-xl py-1.5 text-[10px] font-semibold transition-colors',
                 active ? 'text-orange' : 'text-muted-foreground',

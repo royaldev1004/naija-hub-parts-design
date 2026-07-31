@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft, LayoutGrid, List, ChevronDown, SlidersHorizontal } from 'lucide-react'
+import { LayoutGrid, List, ChevronDown, SlidersHorizontal } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { BackButton } from '@/components/mobile/back-button'
 import { ProductCard } from '@/components/brand/product-card'
 import { SearchBar, FilterChip, EmptyState } from '@/components/brand/ui-bits'
 import { products } from '@/lib/data'
@@ -13,7 +13,6 @@ const filters = ['Category', 'Location', 'Condition', 'Price', 'Vehicle', 'Verif
 const sorts = ['Most Relevant', 'Newest', 'Price: Low to High', 'Price: High to Low']
 
 export default function SearchScreen() {
-  const router = useRouter()
   const [query, setQuery] = useState('Toyota Corolla brake pad')
   const [active, setActive] = useState<string[]>(['Verified Sellers'])
   const [view, setView] = useState<'grid' | 'list'>('grid')
@@ -39,13 +38,7 @@ export default function SearchScreen() {
     <PhoneShell nav>
       <header className="sticky top-0 z-10 space-y-3 bg-card/95 px-4 pb-3 pt-2 backdrop-blur">
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => router.back()}
-            aria-label="Back"
-            className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-foreground hover:bg-muted"
-          >
-            <ArrowLeft className="size-5" />
-          </button>
+          <BackButton fallback="/mobile/home" className="shrink-0" />
           <div className="flex-1">
             <SearchBar value={query} onChange={setQuery} withVoice={false} />
           </div>

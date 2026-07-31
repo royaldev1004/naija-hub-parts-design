@@ -12,7 +12,9 @@ import {
   LogOut,
   BadgeCheck,
 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { setSignedIn } from '@/lib/prototype-auth'
 
 const groups = [
   {
@@ -34,6 +36,7 @@ const groups = [
 ]
 
 export default function AccountPage() {
+  const router = useRouter()
   return (
     <PhoneShell nav>
       <header className="border-b border-border bg-card px-4 py-3">
@@ -84,13 +87,17 @@ export default function AccountPage() {
           </div>
         ))}
 
-        <Link
-          href="/mobile/welcome"
-          className="mt-6 flex items-center justify-center gap-2 rounded-2xl border border-border bg-card px-4 py-3.5 text-sm font-semibold text-destructive hover:bg-warm"
+        <button
+          type="button"
+          onClick={() => {
+            setSignedIn(false)
+            router.push('/mobile/welcome')
+          }}
+          className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl border border-border bg-card px-4 py-3.5 text-sm font-semibold text-destructive hover:bg-warm"
         >
           <LogOut className="size-4" />
           Log out
-        </Link>
+        </button>
 
         <p className="mt-6 text-center text-xs text-muted-foreground">
           NHP by LYTOD MOTORS LTD · v1.0.0

@@ -2,8 +2,10 @@
 
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Loader2, AlertCircle } from 'lucide-react'
+import { Loader2, AlertCircle } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { BackButton } from '@/components/mobile/back-button'
+import { setSignedIn } from '@/lib/prototype-auth'
 import { cn } from '@/lib/utils'
 
 export default function OtpScreen() {
@@ -31,19 +33,16 @@ export default function OtpScreen() {
       return
     }
     setState('loading')
-    setTimeout(() => router.push('/mobile/register'), 1100)
+    setTimeout(() => {
+      setSignedIn(true)
+      router.push('/mobile/dashboard')
+    }, 1100)
   }
 
   return (
     <PhoneShell>
       <div className="flex h-full flex-col px-6 pb-8 pt-4">
-        <button
-          onClick={() => router.back()}
-          aria-label="Back"
-          className="inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
-        >
-          <ArrowLeft className="size-5" />
-        </button>
+        <BackButton fallback="/mobile/login" />
 
         <div className="mt-8">
           <h1 className="font-heading text-2xl font-bold text-foreground">Enter Verification Code</h1>

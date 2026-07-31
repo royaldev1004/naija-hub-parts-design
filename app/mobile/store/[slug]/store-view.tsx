@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { ArrowLeft, Share2, MapPin, Phone, Clock, Package } from 'lucide-react'
+import { Share2, MapPin, Phone, Clock, Package } from 'lucide-react'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { BackButton } from '@/components/mobile/back-button'
 import { VerifiedBadge } from '@/components/brand/badges'
 import { StoreInitials } from '@/components/brand/store-card'
 import { WhatsAppButton, CallButton } from '@/components/brand/contact-buttons'
@@ -15,7 +15,6 @@ import { cn } from '@/lib/utils'
 const tabs = ['Products', 'About', 'Contact'] as const
 
 export function StoreView({ store, products }: { store: Store; products: Product[] }) {
-  const router = useRouter()
   const [tab, setTab] = useState<(typeof tabs)[number]>('Products')
   const [query, setQuery] = useState('')
 
@@ -27,13 +26,7 @@ export function StoreView({ store, products }: { store: Store; products: Product
         {/* Header banner */}
         <div className="relative bg-dark px-4 pb-4 pt-2 text-white">
           <div className="flex items-center justify-between">
-            <button
-              onClick={() => router.back()}
-              aria-label="Back"
-              className="inline-flex size-9 items-center justify-center rounded-full bg-white/10"
-            >
-              <ArrowLeft className="size-5" />
-            </button>
+            <BackButton fallback="/mobile/home" className="bg-white/10 text-white hover:bg-white/20" />
             <button aria-label="Share store" className="inline-flex size-9 items-center justify-center rounded-full bg-white/10">
               <Share2 className="size-4" />
             </button>
