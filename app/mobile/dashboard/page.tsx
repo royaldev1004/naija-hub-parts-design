@@ -36,37 +36,37 @@ export default function DashboardScreen() {
   return (
     <PhoneShell nav>
       {/* Individual navbar — separate from the hero */}
-      <nav className="flex items-center justify-between border-b border-white/10 bg-dark px-4 py-3 text-white">
+      <nav className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-card/95 px-4 py-3 backdrop-blur">
         <Link href="/mobile/home" aria-label="Naija Hub Parts home">
-          <Logo variant="dark" size={34} withWordmark />
+          <Logo variant="light" size={34} withWordmark />
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Link
             href="/mobile/notifications"
             aria-label="Notifications"
-            className="relative inline-flex size-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            className="relative inline-flex size-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-muted"
           >
             <Bell className="size-5" />
-            <span className="absolute right-2 top-2 size-2 rounded-full bg-orange" />
+            <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-orange" />
           </Link>
           <Link
             href="/mobile/account"
             aria-label="Your profile"
-            className="inline-flex size-9 items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            className="inline-flex size-9 items-center justify-center overflow-hidden rounded-full text-foreground transition-colors hover:bg-muted"
           >
             <User className="size-5" />
           </Link>
         </div>
       </nav>
 
-      <header className="bg-dark px-4 pb-5 pt-2 text-white">
+      <header className="bg-card px-4 pb-5 pt-3">
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-sm text-white/60">Good morning,</p>
-            <h1 className="font-heading text-xl font-bold">Tinuoye</h1>
+            <p className="text-sm text-muted-foreground">Good morning,</p>
+            <h1 className="font-heading text-xl font-bold text-foreground">Tinuoye</h1>
             <div className="mt-1.5 flex items-center gap-1.5">
-              <span className="text-sm text-white/70">Ladipo Auto Spares</span>
-              <VerifiedBadge compact className="bg-success/20" />
+              <span className="text-sm text-muted-foreground">Ladipo Auto Spares</span>
+              <VerifiedBadge compact />
             </div>
           </div>
         </div>
