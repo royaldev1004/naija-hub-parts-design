@@ -17,10 +17,14 @@ export default function HomeScreen() {
         <div className="flex items-center justify-between">
           <Logo variant="light" size={34} />
           <div className="flex items-center gap-1">
-            <button className="relative inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted">
+            <Link
+              href="/mobile/notifications"
+              aria-label="Notifications"
+              className="relative inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
+            >
               <Bell className="size-5" />
               <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-orange" />
-            </button>
+            </Link>
             <Link
               href="/mobile/account"
               className="inline-flex size-9 items-center justify-center rounded-full text-foreground hover:bg-muted"
@@ -39,8 +43,8 @@ export default function HomeScreen() {
       <div className="space-y-6 px-4 pb-6 pt-2">
         {/* Hero */}
         <div>
-          <h1 className="text-balance font-heading text-2xl font-bold leading-tight text-foreground">
-            Find the right automotive part
+          <h1 className="text-balance font-heading text-3xl font-extrabold leading-[1.15] tracking-tight text-foreground">
+            Find the <span className="text-orange">right</span> automotive part
           </h1>
           <Link href="/mobile/search" className="mt-3 block">
             <SearchBar />
