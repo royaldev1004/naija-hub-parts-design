@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ChevronDown, MapPin, Bell, User } from 'lucide-react'
 import { Logo } from '@/components/brand/logo'
 import { PhoneShell } from '@/components/mobile/phone-shell'
+import { DragScrollRow } from '@/components/mobile/drag-scroll-row'
 import { ProductCard } from '@/components/brand/product-card'
 import { StoreCard } from '@/components/brand/store-card'
 import { CategoryCard, SectionHeader } from '@/components/brand/ui-bits'
@@ -59,13 +60,13 @@ export default function HomeScreen() {
         {/* Featured — horizontal scroll */}
         <div>
           <SectionHeader title="Featured Parts" href="/mobile/search" />
-          <div className="-mx-4 mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <DragScrollRow className="-mr-4 mt-3 pr-4">
             {products.slice(0, 4).map((p) => (
               <div key={p.id} className="w-[82%] shrink-0 snap-start">
                 <ProductCard product={p} href={`/mobile/product/${p.id}`} />
               </div>
             ))}
-          </div>
+          </DragScrollRow>
         </div>
 
         {/* Recently added */}

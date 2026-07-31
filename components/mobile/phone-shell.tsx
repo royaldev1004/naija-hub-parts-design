@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Home, Search, PlusCircle, Store, User, Signal, Wifi, BatteryFull } from 'lucide-react'
+import { Home, Search, PlusCircle, Plus, Store, User, Signal, Wifi, BatteryFull } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { isSignedIn } from '@/lib/prototype-auth'
 
@@ -45,13 +45,30 @@ export function BottomNav() {
   }, [])
 
   return (
-    <nav className="border-t border-border bg-card">
+    <nav className="relative z-20 border-t border-border bg-card">
       <div className="flex items-stretch justify-around px-2 pb-5 pt-2">
         {navItems.map((item) => {
           // Guests must sign in (phone + OTP) before reaching dealer-only tabs.
           const href = item.dealer && !signedIn ? '/mobile/login' : item.href
           const active = pathname === item.href || (item.href === '/mobile/dashboard' && pathname.startsWith('/mobile/dashboard'))
           const Icon = item.icon
+
+          // Add Listing is the primary action — emphasize with a raised orange circle.
+          if (item.href === '/mobile/add-listing') {
+            return (
+              <Link
+                key={item.href}
+                href={href}
+                className="flex flex-1 flex-col items-center gap-1 text-[10px] font-semibold text-foreground"
+              >
+                <span className="-mt-6 inline-flex size-14 items-center justify-center rounded-full bg-orange text-white shadow-lg shadow-orange/30 ring-4 ring-card">
+                  <Plus className="size-7" strokeWidth={2.75} />
+                </span>
+                {item.label}
+              </Link>
+            )
+          }
+
           return (
             <Link
               key={item.href}
