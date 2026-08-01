@@ -5,7 +5,7 @@ import { StoreInitials } from '@/components/brand/store-card'
 import { stores } from '@/lib/data'
 
 export const metadata = {
-  title: 'Verified Stores — Naija Hub Parts',
+  title: 'Verified Stores — Naija Parts Hub',
   description: 'Browse verified automotive parts dealers with physical stores across Nigeria.',
 }
 

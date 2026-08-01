@@ -9,7 +9,7 @@ type LogoProps = {
 }
 
 /**
- * NHP brand logo.
+ * NPH brand logo.
  * - variant="dark": orange-gear-on-black icon (use on splash, app icon, dark headers, favicon)
  * - variant="light": black-gear-on-white icon (use on registration, white headers, light backgrounds)
  */
@@ -19,7 +19,7 @@ export function Logo({ variant = 'dark', size = 40, withWordmark = false, classN
     <span className={cn('inline-flex items-center gap-2.5', className)}>
       <Image
         src={src || '/placeholder.svg'}
-        alt="Naija Hub Parts logo"
+        alt="Naija Parts Hub logo"
         width={size}
         height={size}
         className="rounded-xl object-cover"
@@ -34,7 +34,7 @@ export function Logo({ variant = 'dark', size = 40, withWordmark = false, classN
             )}
             style={{ fontSize: size * 0.42 }}
           >
-            Naija Hub Parts
+            Naija Parts Hub
           </span>
           <span
             className="text-muted-foreground mt-0.5"

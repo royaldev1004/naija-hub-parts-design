@@ -31,7 +31,7 @@ export function AdminSidebar() {
       <div className="flex items-center gap-2 px-5 py-5">
         <Logo variant="dark" size={34} />
         <div className="leading-none">
-          <p className="font-heading text-sm font-bold text-white">Naija Hub Parts</p>
+          <p className="font-heading text-sm font-bold text-white">Naija Parts Hub</p>
           <p className="mt-0.5 text-[11px] text-white/50">Admin Console</p>
         </div>
       </div>

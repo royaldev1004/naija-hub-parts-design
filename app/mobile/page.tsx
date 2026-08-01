@@ -30,7 +30,7 @@ export default function SplashScreen() {
         <div />
         <div className="flex flex-col items-center">
           <Logo variant="dark" size={112} />
-          <h1 className="mt-6 font-heading text-2xl font-bold text-white">Naija Hub Parts</h1>
+          <h1 className="mt-6 font-heading text-2xl font-bold text-white">Naija Parts Hub</h1>
           <p className="mt-2 max-w-[240px] text-sm leading-relaxed text-white/60">
             Find automotive parts from verified Nigerian dealers
           </p>

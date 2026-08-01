@@ -61,7 +61,7 @@ export default function StyleGuidePage() {
         <div>
           <h1 className="font-heading text-3xl font-bold text-foreground">Design System</h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            The developer-ready style guide for Naija Hub Parts — colors, typography, spacing, buttons, cards,
+            The developer-ready style guide for Naija Parts Hub — colors, typography, spacing, buttons, cards,
             badges and component behaviour. Built on an 8-point spacing system with Inter &amp; Manrope.
           </p>
         </div>

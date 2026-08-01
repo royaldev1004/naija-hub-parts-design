@@ -120,7 +120,7 @@ export default function WebHomePage() {
         <div className="text-center">
           <h2 className="font-heading text-2xl font-semibold text-foreground sm:text-3xl">How it works</h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
-            Naija Hub Parts connects buyers and sellers. Payment, delivery and warranty are arranged directly
+            Naija Parts Hub connects buyers and sellers. Payment, delivery and warranty are arranged directly
             with the seller.
           </p>
         </div>

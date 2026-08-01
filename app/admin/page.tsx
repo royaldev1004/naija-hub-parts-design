@@ -3,7 +3,7 @@ import { Mail, Lock } from 'lucide-react'
 import { Logo } from '@/components/brand/logo'
 
 export const metadata = {
-  title: 'Admin Sign In — Naija Hub Parts',
+  title: 'Admin Sign In — Naija Parts Hub',
 }
 
 export default function AdminLoginPage() {
@@ -13,7 +13,7 @@ export default function AdminLoginPage() {
         <div className="flex flex-col items-center text-center">
           <Logo variant="dark" size={56} />
           <h1 className="mt-5 font-heading text-2xl font-bold text-white">Admin Console</h1>
-          <p className="mt-1 text-sm text-white/60">Sign in to manage the Naija Hub Parts marketplace.</p>
+          <p className="mt-1 text-sm text-white/60">Sign in to manage the Naija Parts Hub marketplace.</p>
         </div>
 
         <form className="mt-8 rounded-2xl border border-white/10 bg-soft-black p-6">

@@ -37,7 +37,7 @@ export default function DashboardScreen() {
     <PhoneShell nav>
       {/* Individual navbar — separate from the hero */}
       <nav className="sticky top-0 z-10 flex items-center justify-between bg-card/95 px-4 py-3 backdrop-blur">
-        <Link href="/mobile/home" aria-label="Naija Hub Parts home">
+        <Link href="/mobile/home" aria-label="Naija Parts Hub home">
           <Logo variant="light" size={34} />
         </Link>
         <div className="flex items-center gap-1">

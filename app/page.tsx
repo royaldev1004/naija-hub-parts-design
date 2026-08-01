@@ -49,7 +49,7 @@ export default function HubPage() {
             High-fidelity clickable mockup
           </span>
           <h1 className="mt-4 text-balance font-heading text-4xl font-bold leading-tight sm:text-5xl">
-            Naija Hub Parts
+            Naija Parts Hub
           </h1>
           <p className="mt-4 text-pretty text-base leading-relaxed text-white/70 sm:text-lg">
             A trusted Nigerian automotive-parts marketplace connecting buyers with verified physical stores.

@@ -122,7 +122,7 @@ export function ProductDetailView({ product }: { product: Product }) {
           {/* Notice */}
           <div className="flex gap-2 rounded-2xl bg-warning/10 p-3.5 text-xs leading-relaxed text-foreground">
             <Info className="mt-0.5 size-4 shrink-0 text-warning" />
-            Naija Hub Parts connects buyers and sellers. Payment, delivery, warranty, and product compatibility are
+            Naija Parts Hub connects buyers and sellers. Payment, delivery, warranty, and product compatibility are
             arranged directly with the seller.
           </div>
 

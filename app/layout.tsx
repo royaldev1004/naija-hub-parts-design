@@ -16,7 +16,7 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: 'Naija Hub Parts — Automotive Parts Marketplace',
+  title: 'Naija Parts Hub — Automotive Parts Marketplace',
   description:
     'Find automotive parts from verified Nigerian dealers. Car, motorcycle, truck, tractor, and heavy-equipment parts. Operated by Lytod Motors Ltd.',
   generator: 'v0.app',

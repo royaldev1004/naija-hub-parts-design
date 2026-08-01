@@ -81,7 +81,7 @@ export default async function WebProductPage({ params }: { params: Promise<{ id:
           {/* Notice */}
           <div className="mt-6 flex gap-2 rounded-2xl bg-warning/10 p-4 text-xs leading-relaxed text-foreground">
             <Info className="mt-0.5 size-4 shrink-0 text-warning" />
-            Naija Hub Parts connects buyers and sellers. Payment, delivery, warranty, and product compatibility are
+            Naija Parts Hub connects buyers and sellers. Payment, delivery, warranty, and product compatibility are
             arranged directly with the seller.
           </div>
         </div>

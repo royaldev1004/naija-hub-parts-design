@@ -102,7 +102,7 @@ export default async function WebStorePage({ params }: { params: Promise<{ slug:
               </div>
             </div>
             <p className="px-1 text-xs text-muted-foreground">
-              Store URL: naijahubparts.ng/store/{store.slug}
+              Store URL: naijapartshub.ng/store/{store.slug}
             </p>
             <Link
               href="/web/stores"

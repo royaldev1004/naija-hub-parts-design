@@ -60,7 +60,7 @@ export function SiteFooter() {
         </div>
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <p>Operated by Lytod Motors Ltd · RC 1234567</p>
-          <p>© 2026 Naija Hub Parts. Automotive-only marketplace.</p>
+          <p>© 2026 Naija Parts Hub. Automotive-only marketplace.</p>
         </div>
       </div>
     </footer>
